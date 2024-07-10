@@ -1,9 +1,9 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
 //handles get request on the homepage
 router.get("/", (request, response) => {
     response.send("Hello Homepage!");
 });
 
-module.exports = router;
+export default router;

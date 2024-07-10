@@ -1,11 +1,9 @@
-// import express from "express";
-const express = require("express");
+import express from "express";
+import indexRouter from "./routes/index.js";
+import testRouter from"./routes/test.js";
+
+
 const app = express();
-const indexRouter = require("./routes/index");
-const testRouter = require("./routes/test");
-
-
-
 const port = 5500;
 
 //set routes from handlers/endpoints

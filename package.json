@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DejaM24/react-chitchat-app.git"
+  },
+  "author": "Deja Moore",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DejaM24/react-chitchat-app/issues"
+  },
+  "homepage": "https://github.com/DejaM24/react-chitchat-app#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}

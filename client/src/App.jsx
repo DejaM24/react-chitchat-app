@@ -1,24 +1,19 @@
-import Logo from './assets/emoji.svg'
-import Logo2 from './assets/migae-semibold-1.png'
+import Logo from '/src/emoji.svg'
+import Logo2 from '/src/migae-semibold-1.png'
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
+import Home from './components/Home.jsx';
+import Room from './components/Room.jsx';
 
 function App() {
 
 
   return (
     <>
-      <div>
-        <a>
-          <img src={Logo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>WELCOME TO</h1>
-      <div className="card">
-        <img src={Logo2} className='logo2'></img>
-      </div>
-      <button className="read-the-docs">
-      Explore
-      </button>
+    <Routes>
+      <Route path='/' element={<Home></Home>}></Route>
+      <Route path='/room' element={<Room></Room>}></Route>
+    </Routes>
     </>
   )
 }

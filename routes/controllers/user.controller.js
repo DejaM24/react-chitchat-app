@@ -5,7 +5,7 @@ import User from "../models/user.model.js";
 const router = Router();
 
 //user endpoint
-router.post("/", async (request, response) => {
+router.post("/room", async (request, response) => {
     try {
         const checkUser = await User.exists({
             username: request.body.username
@@ -26,7 +26,7 @@ router.post("/", async (request, response) => {
 });
 
 //updates user in database
-router.put("/", async (request,resopnse) => {
+router.put("/room", async (request,resopnse) => {
     try {
         const updateUser = await User.findOneAndUpdate({ _id: request.params._id }, request.body, {new: true});
         resopnse.send(updateUser);

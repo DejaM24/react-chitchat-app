@@ -1,8 +1,8 @@
-import express from "express";
+import express, { request, response } from "express";
 import "dotenv/config";
 import cors from "cors";
 import indexRouter from "./routes/index.js";
-import testRouter from"./routes/test.js";
+import roomRouter from "./routes/controllers/room.controller.js";
 import mongoose from "mongoose";
 
 
@@ -16,7 +16,7 @@ app.listen(process.env.SERVER_PORT, () => {
 
 //set routes from handlers/endpoints
 app.use("/", indexRouter);
-app.use("/test", testRouter);
+app.use("/", roomRouter);
 
 //mongoose connection
 mongoose.connect(process.env.ATLAS_CONNECTION);

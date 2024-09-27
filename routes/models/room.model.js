@@ -2,8 +2,7 @@ import { Schema, model } from "mongoose";
 
 const roomSchema = new Schema({
     name: String,
-    descripton: String,
-    addedUsers: Array
+    owner: String,
 });
 
 export default model("Room", roomSchema);

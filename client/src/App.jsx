@@ -1,25 +1,18 @@
-import reactLogo from './assets/react.svg'
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
+import Home from './components/Home.jsx';
+import Room from './components/Room.jsx';
+
 
 function App() {
 
 
   return (
     <>
-      <div>
-        <a>
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>WELCOME TO</h1>
-      <div className="card">
-        <p>
-      REACT-CHITCHAT-APP
-        </p>
-      </div>
-      <button className="read-the-docs">
-      Explore
-      </button>
+    <Routes>
+      <Route path='/' element={<Home></Home>}></Route>
+      <Route path='/room' element={<Room></Room>}></Route>
+    </Routes>
     </>
   )
 }

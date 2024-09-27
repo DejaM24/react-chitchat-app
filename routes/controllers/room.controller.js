@@ -8,8 +8,7 @@ router.post("/room", async (request, response) => {
     try {
         const room = new Room({
             name: request.body.name,
-            descripton: request.body.descripton,
-            addedUsers: request.body.addedUsers
+            owner: request.body.owner,
         });
         await room.save();
         response.send({

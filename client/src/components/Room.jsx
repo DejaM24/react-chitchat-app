@@ -14,9 +14,6 @@ export default function Room() {
   const [owner, setOwner] = useState('');
   const [showModal, setShowModal] = React.useState(false);
 
-
-
-
   function navigateHome() {
     navigate('/');
   }

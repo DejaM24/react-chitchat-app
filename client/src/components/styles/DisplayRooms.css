@@ -19,8 +19,8 @@ p {
 
 .fetchData {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 2%;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10%;
 }
 
 .joinLink {

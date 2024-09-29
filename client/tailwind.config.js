@@ -4,6 +4,9 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
+    colors: {
+      'teal': "#20CCDC"
+    },
   },
   fontFamily: {
     sans: ['sans-serif']

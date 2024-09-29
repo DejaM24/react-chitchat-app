@@ -13,22 +13,18 @@ export default function AddRoom() {
  
 
     async function addNewRoom(event) {
-        event.preventDefault();
+    //     event.preventDefault();
 
-        const response = await fetch("http://localhost:3000/room", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify({
-                name,
-                owner
-            })
-        });
-
-    
-
-    
+    //     const response = await fetch("http://localhost:3000/room", {
+    //         method: "POST",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify({
+    //             name,
+    //             owner
+    //         })
+    //     });
 
         // const responseBody = await response.json();
 
@@ -51,11 +47,11 @@ export default function AddRoom() {
 
             {/* border line */}
           {/* <div className="my-24 border-t-2 bg-white"></div> */}
-          {/* <hr />
+          {/* <hr /> */}
 
        
 
-          {showModal ? (
+          {/* {showModal ? (
             <>
               <div
                 className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -91,19 +87,19 @@ export default function AddRoom() {
 
                         <hr />
 
-                        <button onClick={() => setShowModal(false)} className="text-black font-bold" type="submit">Submit</button> */}
-{/* 
+                        <button onClick={() => setShowModal(false)} className="text-black font-bold" type="submit">Submit</button>
+
                         <button
                         className="block btn-outline btn-secondary hover:bg-secondary font-bold"
                         type="submit"
                         onClick={() => setShowModal(false)}
-                      >
+                      > */}
                         {/*save user's submitted form here*/}
-                        {/* Add New Chatbox
-                      </button> */} 
+                         {/* Add New Chatbox
+                      </button> 
 
-                      {/* </form> */}
-                    {/* </div> */}
+                      </form>
+                     </div> */}
                     {/*footer*/}
                     {/* <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                       <button
@@ -112,16 +108,16 @@ export default function AddRoom() {
                         onClick={() => setShowModal(false)}
                       >
                         Close
-                      </button> */}
-                      {/* <button
+                      </button>
+                      <button
                         className="block btn-outline btn-secondary hover:bg-secondary font-bold"
                         type="submit"
                         onClick={() => setShowModal(false)}
                       > */}
                         {/*save user's submitted form here*/}
                         {/* Add New Chatbox
-                      </button> */}
-                    {/* </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

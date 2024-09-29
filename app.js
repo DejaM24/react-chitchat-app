@@ -16,7 +16,7 @@ app.listen(process.env.SERVER_PORT, () => {
 
 //set routes from handlers/endpoints
 app.use("/", indexRouter);
-app.use("/", roomRouter);
+app.use("/room", roomRouter);
 
 //mongoose connection
 mongoose.connect(process.env.ATLAS_CONNECTION);
@@ -26,5 +26,5 @@ db.once("open", () => {
     console.log("Database successfully connected.");
 });
 
-db.on("error", console.error.bind(console, "Connection error:"))
+db.on("error", console.error.bind(console, "Connection error:"));
 

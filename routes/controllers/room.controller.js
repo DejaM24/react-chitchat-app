@@ -34,7 +34,7 @@ router.get("/room", async (request, response) => {
 });
 
 //updates room in database
-router.put("/room", async (request, response) => {
+router.put("/room/:id", async (request, response) => {
     try {
         const updateRoom = await Room.findOneAndUpdate({ _id: request.params._id }, request.body, {new: true});
         response.send(updateRoom);
@@ -46,7 +46,7 @@ router.put("/room", async (request, response) => {
 });
 
 //deletes room from database
-router.delete("/room", async (request, response) => {
+router.delete("/room/:_id", async (request, response) => {
     try {
         const deleteRoom = await Room.deleteOne({ _id: request.params._id });
         response.send(deleteRoom);

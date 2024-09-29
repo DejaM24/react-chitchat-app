@@ -1,4 +1,4 @@
-import { Router, response } from "express";
+import { Router } from "express";
 import User from "../models/user.model.js";
 
 
@@ -26,7 +26,7 @@ router.post("/room", async (request, response) => {
 });
 
 //updates user in database
-router.put("/room", async (request,resopnse) => {
+router.put("/user/:_id", async (request,resopnse) => {
     try {
         const updateUser = await User.findOneAndUpdate({ _id: request.params._id }, request.body, {new: true});
         resopnse.send(updateUser);
@@ -38,7 +38,7 @@ router.put("/room", async (request,resopnse) => {
 });
 
 //deletes user from database
-router.delete("", async (request, response) => {
+router.delete("/user/:_id", async (request, response) => {
     try {
         const deleteUser = await User.deleteOne({ _id: request.params._id });
         response.send(deleteUser);

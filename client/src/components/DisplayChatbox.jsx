@@ -1,31 +1,29 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function DisplayChatbox() {
-    const navigate = useNavigate();
+    const [posts, setPosts] = useState([]);
+    let { room } = useParams();
 
-    function navigateHome() {
-        navigate("/")
-    }
+    useEffect(() => {
+        fetch(`http://localhost:3000/message/${room}`)
+        .then(response => response.json())
+        .then(data => setPosts(data))
+        .catch(err => console.log(err))
+    }, [posts]);
 
     return (
         <div>
-             
-      {/*navbar*/}
-      <div className="navbar fixed top-7 left-10 w-full">
-        <div className="navbar-start">
-          <img src={Logo2} className='logo2'></img>
-        </div>
-        <div className="navbar-end">
-          <button onClick={() => navigateHome()} className="block btn-outline btn-primary hover:bg-primary font-bold mx-32 px-8 py-3">Home</button>
-        </div>
-      </div>
-
-<div>
-    <h2>
-        You made it!
-    </h2>
-</div>
+            <div>
+            {posts.map((list, index) => (
+                    <h2 key={index} className="border-4 border-solid rounded-full border-white p-5 mb-9 font-bold">
+                        {/* <div className="text-2xl" >User:</div> */}
+                        <div className="text-4xl mb-2">{list.name} <br></br></div>
+                        <div className="pb-5 font-teal">Message: {list.post}<br></br></div>
+                        <div>{list.date}</div><br></br>
+                    </h2>
+                ))}
+            </div>
         </div>
     )
 }

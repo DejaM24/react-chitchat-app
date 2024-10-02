@@ -1,12 +1,11 @@
 import { Schema, model } from "mongoose";
 
 const messageSchema = new Schema({
-    when: {
+    date: {
         type: Date,
         default: Date.now
     },
     user: String,
-    room: String,
     post: String
 });
 

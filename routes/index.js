@@ -163,6 +163,36 @@ router.delete("/message/:_id", async (request, response) => {
     }
 });
 
+//post endpoint
+router.post("/message/:room", async (request, response) => {
+    try {
+        const post = new Message({
+            date: request.body.date,
+            user: request.body.user,
+            post: request.body.post
+        });
+        await post.save();
+        response.send({
+            message: "Room successfully created."
+        });
+    } catch (err) {
+        response.status(500).send({
+            message: err.message
+        });
+    }
+});
+
+//displays all post created in each individual chatbox
+router.get("/message/:room", async (request, response) => {
+    try {
+        const allPost = await Message.find({});
+        response.send(allPost)
+    } catch (err) {
+        response.status(500).send({
+            message: err.message
+        });
+    }
+});
 
 export default router;
 

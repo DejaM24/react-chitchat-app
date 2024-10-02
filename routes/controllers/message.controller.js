@@ -7,10 +7,11 @@ const router = Router();
 router.post("/message/:room", async (request, response) => {
     try {
         const message = new Message({
-            ...request.body,
-            user: request.user._id,
-            room: request.params.room,
+            // ...request.body,
+            date: request.body.date,
+            name: request.body.user,
             post: request.body.post
+            // room: request.params.room,
         });
         await message.save();
         response.send({

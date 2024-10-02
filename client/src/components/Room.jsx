@@ -34,7 +34,7 @@ async function createRoom(e){
 
   const responseBody = await response.json();
 
-  if (response.status === 2000) {
+  if (response.status === 200) {
     console.log(responseBody);
   } else {
     console.log(responseBody.message)
@@ -57,16 +57,16 @@ async function createRoom(e){
       </div>
 
       {/*page header caption */}
-      <div className="">
+      {/* <div className="">
         <div className="font-semibold text-4xl p-3">Open a chatbox to see what's all the chat about </div>
         <div className="font-semibold text-4xl"> Or add your own </div>
-      </div>
+      </div> */}
 
       {/*new chatbox button */}
       <div>
 
       <button
-            className="block btn-outline btn-primary hover:bg-primary font-bold mx-72 mt-4"
+            className="flex btn-outline btn-primary hover:bg-primary font-bold mx-72 mt-4"
             type="button"
             onClick={() => setShowModal(true)}
           >

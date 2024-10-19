@@ -6,50 +6,18 @@ import DisplayChatbox from './DisplayChatbox.jsx';
 
 
 export default function DisplayMessages() {
-    const [body, setBody] = useState();
     let { room } = useParams();
     const navigate = useNavigate();
-    const [roomName, setRoomName] = useState({});
-    const [date, setDate] = useState('');
     const [user, setUser] = useState('');
     const [post, setPost] = useState('');
+    const [records, setRecords] = useState([]);
 
-    // const [posts, setPosts] = useState([]);
-
-
-    // useEffect(() => {
-    //     fetch(`http://localhost:3000/message/${room}`)
-    //     .then(response => response.json())
-    //     .then(data => setPosts(data))
-    //     .catch(err => console.log(err))
-    // }, [posts]);
-
-    async function listRoom() {
-        const data = localStorage.getItem(`${room}`)
-        console.log("Room Name:", data);
-        if (!data) {
-            console.log("Error")
-            return;
-        }
-
-        const response = await fetch(`http://localhost:3000/message/${room}`, {
-            method: "GET",
-            header: {
-                "content-type": "application/json"
-            },
-        });
-
-        if (response.status === 200) {
-            const body = await response.json();
-            setRoomName(body);
-        } else {
-            console.log("ERROR!")
-        }
-
-        useEffect(() => {
-            listRoom()
-        }, []);
-    }
+    useEffect(() => {
+        fetch(`http://localhost:3000/message/${room}`)
+        .then(response => response.json())
+        .then(data => setRecords(data))
+        .catch(err => console.log(err))
+    }, [records]);
 
     function navigateBack() {
         navigate('/room');
@@ -64,7 +32,6 @@ export default function DisplayMessages() {
                 "content-type": "application/json",
             },
             body: JSON.stringify({
-                date,
                 user,
                 post
             })
@@ -91,44 +58,33 @@ export default function DisplayMessages() {
                 </div>
             </div>
 
-            {/* header */}
-            <h1 className="font-bold">Welcome to the {room} Chatbox</h1>
-
-
-            {/* <div>
-            {records.indexOf((list) => (
-                <div key={list}>
-                    <div>{list.name}</div>
-                </div> 
-            ))}
-            </div> */}
-
+            {/* room header */}
+            <h1 className="font-bold mt-28 mb-10 sticky">Welcome to the {room} Chatbox</h1>
+        
             {/* message box */}
-            <form className='flex items-center flex-col border-2 border-white rounded-md' onSubmit={postMessage}>
-                <h3 className="font-bold text-2xl m-5">Add Comment</h3>
+            <form onSubmit={postMessage} className='flex items-center flex-col border-2 border-white rounded-md'>
+                <h3 className="font-bold text-2xl m-5">Add Message</h3>
                 <label>Name:</label>
-                <input value={user} onChange={e => setName(e.target.value)} placeholder='Type here..' className="m-5"></input>
-                <label>Post:</label>
-                <textarea value={post} onChange={e => setPost(e.target.value)} placeholder="Comment here..." className="p-14 m-5"></textarea>
+                <input value={user} onChange={e => setUser(e.target.value)} placeholder='Type here...' className="m-5 rounded-md shadow-lg"></input>
+                <label>Message:</label>
+                <textarea value={post} onChange={e => setPost(e.target.value)} placeholder="Type here..." className="pb-32 pr-32 m-5 rounded-md shadow-lg"></textarea>
                 <label>Date:</label>
                 <div className="m-8">{<DisplayDate></DisplayDate>}</div>
                 <button type="submit" className="btn-outline btn-primary hover:bg-primary font-bold mb-5">Post</button>
             </form>
 
-        <div>
-            {<DisplayChatbox></DisplayChatbox>}
-        </div>
-{/* 
+            {/* message board header */}
             <div>
-            {posts.map((list, index) => (
-                    <h2 key={index} className="border-4 border-solid rounded-full border-white p-5 mb-9 font-bold"> */}
-                        {/* <div className="text-2xl" >User:</div> */}
-                        {/* <div className="text-4xl mb-2">{list.name} <br></br></div>
-                        <div className="pb-5 font-teal">Message: {list.post}<br></br></div>
-                        <div>{list.date}</div><br></br>
-                    </h2>
-                ))}
-            </div> */}
+                <div className='font-bold text-2xl m-10'>
+                    Message Board
+                </div>
+
+            {/* other user messages */}
+                <div>
+                    {<DisplayChatbox></DisplayChatbox>}
+                </div>
+
+            </div>
 
         </div>
 

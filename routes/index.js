@@ -111,9 +111,7 @@ router.delete("/user/:_id", async (request, response) => {
 router.post("/message/:room", async (request, response) => {
     try {
         const message = new Message({
-            ...request.body,
-            user: request.user._id,
-            room: request.params.room,
+            user: request.body.user,
             post: request.body.post
         });
         await message.save();

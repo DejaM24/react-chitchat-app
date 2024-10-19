@@ -34,7 +34,7 @@ router.get("/room", async (request, response) => {
 });
 
 //updates room in database
-router.put("/room/:id", async (request, response) => {
+router.put("/room/:_id", async (request, response) => {
     try {
         const updateRoom = await Room.findOneAndUpdate({ _id: request.params._id }, request.body, {new: true});
         response.send(updateRoom);

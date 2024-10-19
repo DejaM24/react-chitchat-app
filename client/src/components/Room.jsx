@@ -162,9 +162,7 @@ async function createRoom(e){
         <button type="submit">Submit</button>
       </form>
 
-      {name !== '' && <p>Your {name} chatbox is saved!</p>}
 
-      {owner !== '' && <p>Thank you {owner}!</p>} 
 
 <DisplayRooms></DisplayRooms>
 

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export default function DisplayRooms() {
     const [records, setRecords] = useState([]);
 
-
     useEffect(() => {
         fetch("http://localhost:3000/room")
         .then(response => response.json())

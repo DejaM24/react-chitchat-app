@@ -12,7 +12,6 @@ export default function Room() {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [owner, setOwner] = useState('');
-  const [showModal, setShowModal] = React.useState(false);
   const [showModals, setShowModals] = useState(false);
 
   function navigateHome() {
@@ -28,8 +27,7 @@ export default function Room() {
         "content-type": "application/json"
       },
       body: JSON.stringify({
-        name,
-        owner
+        name
       })
     });
 
@@ -59,7 +57,7 @@ export default function Room() {
         <button 
         className="flex btn-outline btn-primary hover:bg-primary font-bold text-2xl mx-72 mt-28 mb-8"
         onClick={() => setShowModals(true)}>
-          + Add A New Chatbox
+          + Add A New Room
         </button>
 
         {showModals ? (<>
@@ -68,7 +66,7 @@ export default function Room() {
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-4xl text-neutral-950 font-semibold text-black mx-20 my-36">
-                    Create a New Chatbox
+                    Create a New Room
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -85,14 +83,12 @@ export default function Room() {
                       <input className="rounded-md" value={name} onChange={e => setName(e.target.value)} placeholder="Type here..."></input>
                       <br></br>
 
-                      <label className="text-neutral-950 font-bold">Chatbox Owner:</label>
-                      <input className="rounded-md" value={owner} onChange={e => setOwner(e.target.value)} placeholder="Type here..."></input>
-                      <br></br>
+                     
 
                       <button 
                       className="block btn-outline btn-secondary hover:bg-secondary font-bold" 
                       type="submit" 
-                      onSubmit={() => setShowModals(false)}> Add New Chatbox</button>
+                      onSubmit={() => setShowModals(false)}> + Add New Room</button>
                       <br></br>
 
                       <button

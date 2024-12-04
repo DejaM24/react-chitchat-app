@@ -7,7 +7,7 @@ export default function DateDisplay() {
 
   return (
     <div className="date-display">
-      <p>{formattedDate}</p>
+      <p className='font-bold text-lg'>{formattedDate}</p>
     </div>
   );
 }

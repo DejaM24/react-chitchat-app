@@ -6,12 +6,11 @@ import User from './models/user.model.js';
 const router = Router();
 
 //room controllers
-//creates new room submiited by owner
-router.post("/room", async (request, response) => {
+//creates new room 
+router.post("/", async (request, response) => {
     try {
         const room = new Room({
             name: request.body.name,
-            owner: request.body.owner,
         });
         await room.save();
         response.send({
@@ -25,7 +24,7 @@ router.post("/room", async (request, response) => {
 });
 
 //displays all rooms created
-router.get("/room", async (request, response) => {
+router.get("/", async (request, response) => {
     try {
         const allRooms = await Room.find({});
         response.send(allRooms);
@@ -108,9 +107,10 @@ router.delete("/user/:_id", async (request, response) => {
 
 //message controllers
 //message endpoint
-router.post("/message/:room", async (request, response) => {
+router.post("/room/:room", async (request, response) => {
     try {
         const message = new Message({
+            ...request.body,
             user: request.body.user,
             post: request.body.post
         });
@@ -126,7 +126,7 @@ router.post("/message/:room", async (request, response) => {
 });
 
 //displays all messages created 
-router.get("/message/:room", async (request, response) => {
+router.get("/room/:room", async (request, response) => {
     try {
         const allMessages = await Message.find({});
         response.send(allMessages);
@@ -138,7 +138,7 @@ router.get("/message/:room", async (request, response) => {
 });
 
 //updates message in database
-router.put("/message/:_id", async (request, response) => {
+router.put("/room/:_id", async (request, response) => {
     try {
         const updateMessage = await Message.findOneAndUpdate({ _id: request.params._id }, request.body, {new: true});
         response.send(updateMessage);
@@ -150,7 +150,7 @@ router.put("/message/:_id", async (request, response) => {
 });
 
 //deletes message from database 
-router.delete("/message/:_id", async (request, response) => {
+router.delete("/room/:_id", async (request, response) => {
     try {
         const deleteMessage = await Message.deleteOne({ _id: request.params._id });
         response.send(deleteMessage);

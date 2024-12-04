@@ -14,9 +14,9 @@ export default function DisplayMessages() {
 
     useEffect(() => {
         fetch(`http://localhost:3000/message/${room}`)
-        .then(response => response.json())
-        .then(data => setRecords(data))
-        .catch(err => console.log(err))
+            .then(response => response.json())
+            .then(data => setRecords(data))
+            .catch(err => console.log(err))
     }, [records]);
 
     function navigateBack() {
@@ -57,10 +57,10 @@ export default function DisplayMessages() {
                     <button onClick={() => navigateBack()} className="block btn-outline btn-primary hover:bg-primary font-bold mx-32 px-8 py-3">Back</button>
                 </div>
             </div>
-
-            {/* room header */}
-            <h1 className="font-bold mt-28 mb-10 sticky">Welcome to the {room} Chatbox</h1>
         
+            {/* room header */}
+            <h1 className="font-bold mt-28 mb-10 sticky">Welcome to the Chatbox</h1>
+
             {/* message box */}
             <form onSubmit={postMessage} className='flex items-center flex-col border-2 border-white rounded-md'>
                 <h3 className="font-bold text-2xl m-5">Add Message</h3>
@@ -79,7 +79,7 @@ export default function DisplayMessages() {
                     Message Board
                 </div>
 
-            {/* other user messages */}
+                {/* other user messages */}
                 <div>
                     {<DisplayChatbox></DisplayChatbox>}
                 </div>

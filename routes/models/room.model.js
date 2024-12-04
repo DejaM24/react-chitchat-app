@@ -1,8 +1,7 @@
 import { Schema, model } from "mongoose";
 
 const roomSchema = new Schema({
-    name: String,
-    owner: String,
+    name: String
 });
 
 export default model("Room", roomSchema);

@@ -5,6 +5,9 @@ import Room from './components/Room.jsx';
 import Messsage from './components/Message.jsx';
 import DisplayChatbox from './components/DisplayChatbox.jsx';
 
+import ChatPage from './components/ChatPage.jsx';
+import React from 'react';
+
 
 function App() {
 
@@ -16,6 +19,8 @@ function App() {
       <Route path='/room' element={<Room></Room>}></Route>
       <Route path='/message/:room' element={<Messsage></Messsage>}></Route>
       <Route path='/message/:_id' element={<DisplayChatbox></DisplayChatbox>}></Route>
+
+      <Route path='/room/:roomId' element={<ChatPage></ChatPage>}></Route>
     </Routes>
     </>
   )
